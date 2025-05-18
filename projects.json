@@ -1,0 +1,40 @@
+[
+    {
+      "title": "Multimodal Fashion Recommendation Engine",
+      "description": "Built a production-ready fashion recommendation engine using OpenAI's CLIP for joint image-text embeddings. Integrated DensePose segmentation, hybrid search with FAISS, and adaptive reranking for relevance. Designed clean, modular CLI with masked pre-processing and personalized discovery at scale.",
+      "image": "assets/projects/fashion-demo.png",
+      "date": "Spring 2024",
+      "link": "https://github.com/rahul370139/Fashion_Recommendation_model_demo",
+      "type": "github",
+      "context": "Related to UMD coursework"
+    },
+    {
+      "title": "End-to-End Stock Forecasting – Tesla (TSLA)",
+      "description": "Developed a forecasting pipeline combining technical indicators (RSI, MACD, GARCH, OBV) and FinBERT sentiment scores. Trained and tuned Random Forest, XGBoost, and LSTM-GRU hybrids using Optuna, achieving <2% MAPE. Deployed with walk-forward retraining and modular CLI for real-time use.",
+      "image": "assets/projects/tesla-forecast.png",
+      "date": "Winter 2024",
+      "link": "https://github.com/rahul370139/tesla-stock-forecast",
+      "type": "github",
+      "context": "Self-project"
+    },
+    {
+      "title": "Legal Case Summarisation Pipeline",
+      "description": "Scraped and summarized 250k+ Dutch legal rulings with structured chunking and OpenAI summarization (o3-mini, o1). Implemented retry logic, date filtering, and CSV exports. Designed batch pipelines and CLI tools for scalable legal tech and civic analysis.",
+      "image": "assets/projects/legal-summary.png",
+      "date": "Spring 2024",
+      "link": "https://github.com/rahul370139/legal-summariser",
+      "type": "github",
+      "context": "Self-project"
+    },
+    {
+      "title": "Fake News Detection – IIT (BHU) Summer Intern",
+      "description": "Designed a fake news classification system using manually labeled Twitter data and fact-checking procedures. Applied Word2Vec, GloVe, and ensemble models (Random Forest, LSTM) to achieve 94% recall. Improved information quality and trust in digital content pipelines.",
+      "image": "assets/projects/fake-news.png",
+      "date": "Summer 2019",
+      "certificate": "assets/certificates/summer_intern19.pdf",
+      "type": "certificate",
+      "institution": "IIT (BHU) Varanasi",
+      "context": "Summer intern project at IIT (BHU) Varanasi"
+    }
+  ]
+  
