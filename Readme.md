@@ -116,4 +116,4 @@ MIT © Rahul Sharma
 
 
 > _Built with ❤️, vanilla code & a dash of ScrollReveal._
-> _Have questions? [Email me](mailto:rahul11s@umd.edu) or ping on [LinkedIn](https://linkedin.com/in/rahul-sharma--)._
+> _Have questions? [Email me](mailto:rahul11s@umd.edu) or ping on [LinkedIn](https://linkedin.com/in/rahul-sharma--)._# Updated at Fri Aug 15 17:25:28 EDT 2025
