@@ -552,9 +552,20 @@ img {
 /* ===== SKILLS ===== */
 
 /* ---------- Skills accordion ---------- */
-.skills__data-header{display:flex;align-items:center;gap:.6rem;cursor:pointer}
+.skills__data-header{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  cursor:pointer;
+  padding: 1rem;
+  width: 100%;
+}
 .skills__data-header .skills__icon{font-size:1.8rem}
-.skills__data-content{display:none;padding-top:.7rem}
+.skills__data-content{
+  display:none;
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid #eee;
+}
 .card--clickable.is-open .skills__data-content{display:block}
 .skills__data-header .chevron{margin-left:auto;transition:transform .3s}
 .card--clickable.is-open .chevron{transform:rotate(180deg)}
@@ -570,10 +581,11 @@ img {
 
 .skills__data {
   background-color: var(--bg-card);
-  padding: 2rem;
+  padding: 0; /* Remove padding since header has its own */
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  cursor: pointer;
 }
 
 .skills__data:hover {
@@ -633,20 +645,36 @@ img {
   animation: fillBar 1.5s ease-in-out forwards;
 }
 
-.skills__python::before {
+.skills__programming::before {
   width: 95%;
 }
 
-.skills__ml::before {
+.skills__ai::before {
   width: 90%;
 }
 
-.skills__cloud::before {
+.skills__frameworks::before {
   width: 85%;
 }
 
-.skills__analysis::before {
+.skills__data::before {
+  width: 88%;
+}
+
+.skills__cloud::before {
+  width: 82%;
+}
+
+.skills__analytics::before {
   width: 90%;
+}
+
+.skills__tools::before {
+  width: 85%;
+}
+
+.skills__soft::before {
+  width: 92%;
 }
 
 .skills__percentage {
@@ -674,9 +702,7 @@ img {
     padding: 0 2rem;
   }
   
-  .skills__data {
-    padding: 2.5rem;
-  }
+  /* Remove duplicate skills padding rule */
 }
 
 /* ===== PROJECTS ===== */
@@ -733,6 +759,73 @@ img {
 .work__item:hover .work__img img {
   transform: scale(1.1);
 }
+
+/* ---------- Image fitting improvements ---------- */
+/* Project grid thumbnails: slightly taller for better visibility */
+.work__item .work__img {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: var(--color-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  max-width: 340px; /* Increase the box size a bit */
+  margin: 0 auto; /* Center the image box */
+}
+.work__item .work__img img { 
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0.25rem;
+}
+
+/* Project links in initial view */
+.work__links--initial {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+/* Make education cards fully clickable */
+.education__card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.education__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.education__header {
+  padding: 1rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Work experience logos: revert to original styling */
+.work__card .work__img {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  pointer-events: none;
+}
+
+.work__card .work__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+  pointer-events: none;
+}
+
+/* Make education header/card easier to click */
+.education__header { padding: 1rem; }
+.education__card { cursor: pointer; }
 
 .work__content {
   padding: 1.5rem;
@@ -841,20 +934,7 @@ img {
 }
 
 /* accordion */
-.skills__data-header{
-    display:flex;
-    align-items:center;
-    gap:.8rem;
-    cursor:pointer;
-}
-.skills__data-content{
-    display:none;
-    padding-top:1rem;
-    border-top:1px solid #eee;
-}
-.card--clickable.is-open .skills__data-content{
-    display:block;
-}
+/* Remove duplicate skills rules - they're already defined above */
 
 /* ===== FOOTER ===== */
 .footer {

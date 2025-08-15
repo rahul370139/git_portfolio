@@ -1,5 +1,15 @@
 [
     {
+      "title": "SkillSpring - AI-Powered Career Guidance System",
+      "description": "Built a comprehensive AI-powered career guidance and personalized learning platform using FastAPI backend with Groq LLM integration, Cohere embeddings, and Supabase database. Features intelligent PDF processing, LLM-powered content generation (summaries, quizzes, flashcards, micro-lessons), career matching with skill gap analysis, personalized roadmap generation, and a modern frontend deployed on Vercel. Implements RAG architecture, vector search with pgvector, and sophisticated recommendation systems for career development.",
+      "image": "assets/projects/skillspring.png",
+      "date": "Summer 2025",
+      "demo": "https://skillspring001.vercel.app/",
+      "link": "https://github.com/rahul370139/SkillSpring",
+      "type": "github",
+      "context": "Self-project"
+    },
+    {
       "title": "Multimodal Fashion Recommendation Engine",
       "description": "Built a production-ready fashion recommendation engine using OpenAI's CLIP for joint image-text embeddings. Integrated DensePose segmentation, hybrid search with FAISS, and adaptive reranking for relevance. Designed clean, modular CLI with masked pre-processing and personalized discovery at scale.",
       "image": "assets/projects/fashion-demo.png",

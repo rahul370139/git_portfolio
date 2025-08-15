@@ -168,8 +168,8 @@ document.body.addEventListener('click', e=>{
   const link = e.target.closest('[data-email]');
   if(!link) return;
 
-  // Try native mailto first
-  const email = link.dataset.email;
+  // Always use rahul11s@umd.edu as the recipient
+  const email = 'rahul11s@umd.edu';
   const opened = window.open(`mailto:${email}`, '_self');
 
   // If the browser blocked or did nothing, open Gmail compose
@@ -216,36 +216,50 @@ fetch("projects.json")
                 const initialContent = document.createElement("div");
                 initialContent.className = "work__initial";
                 initialContent.innerHTML = `
-                    <div class="work__img">
-                        <img src="${proj.image}" alt="${proj.title}" loading="lazy" />
+                    <div class=\"work__img\">
+                        <img src=\"${proj.image}\" alt=\"${proj.title}\" loading=\"lazy\" />
                     </div>
                     <h3>${proj.title}</h3>
+                    ${(proj.demo || proj.link) ? `
+                        <div class=\"work__links work__links--initial\">
+                            ${proj.demo ? `
+                                <a href=\"${proj.demo ? proj.demo.trim() : ''}\" class=\"work__link\" target=\"_blank\" rel=\"noopener\">
+                                    <i class='bx bx-play-circle'></i> Demo
+                                </a>
+                            ` : ''}
+                            ${proj.link ? `
+                                <a href=\"${proj.link ? proj.link.trim() : ''}\" class=\"work__link\" target=\"_blank\" rel=\"noopener\">
+                                    <i class='bx bxl-github'></i> Code
+                                </a>
+                            ` : ''}
+                        </div>
+                    ` : ''}
                 `;
                 
                 // Create the expandable content
                 const detailContent = document.createElement("div");
                 detailContent.className = "card__detail";
                 detailContent.innerHTML = `
-                    <span class="work__date">${proj.date}</span>
-                    ${proj.context ? `<span class="project__context">${proj.context}</span>` : ''}
+                    <span class=\"work__date\">${proj.date}</span>
+                    ${proj.context ? `<span class=\"project__context\">${proj.context}</span>` : ''}
                     <p>${proj.description}</p>
-                    ${proj.type === 'github' ? 
-                        `<a href="${proj.link}" class="work__link" target="_blank" rel="noopener">
-                            <i class='bx bx-link-external'></i> View Project
-                        </a>` :
-                        `<div class="work__links">
-                            ${proj.certificate ? `
-                                <a href="${proj.certificate}" class="work__link" target="_blank" rel="noopener">
-                                    <i class='bx bx-file'></i> View Certificate
-                                </a>
-                            ` : ''}
-                            ${proj.link ? `
-                                <a href="${proj.link}" class="work__link" target="_blank" rel="noopener">
-                                    <i class='bx bx-link-external'></i> View Project
-                                </a>
-                            ` : ''}
-                        </div>`
-                    }
+                    <div class=\"work__links\">
+                        ${proj.demo ? `
+                            <a href=\"${proj.demo ? proj.demo.trim() : ''}\" class=\"work__link\" target=\"_blank\" rel=\"noopener\">
+                                <i class='bx bx-play-circle'></i> Live Demo
+                            </a>
+                        ` : ''}
+                        ${proj.link ? `
+                            <a href=\"${proj.link ? proj.link.trim() : ''}\" class=\"work__link\" target=\"_blank\" rel=\"noopener\">
+                                <i class='bx bxl-github'></i> GitHub
+                            </a>
+                        ` : ''}
+                        ${proj.certificate ? `
+                            <a href=\"${proj.certificate}\" class=\"work__link\" target=\"_blank\" rel=\"noopener\">
+                                <i class='bx bx-file'></i> Certificate
+                            </a>
+                        ` : ''}
+                    </div>
                 `;
                 
                 projectCard.appendChild(initialContent);
@@ -259,10 +273,9 @@ fetch("projects.json")
     });
 console.log('Project fetch initiated');
 
-// Education accordion
-document.querySelectorAll('.education__header').forEach(header => {
-  header.addEventListener('click', () => {
-    const card = header.parentElement;
+// Education accordion - make entire card clickable for easier interaction
+document.querySelectorAll('.education__card').forEach(card => {
+  card.addEventListener('click', (e) => {
     const isOpen = card.classList.contains('is-open');
     
     // Close all other cards
@@ -275,4 +288,42 @@ document.querySelectorAll('.education__header').forEach(header => {
     // Toggle current card
     card.classList.toggle('is-open');
   });
+});
+
+// Skills accordion - make entire card clickable for easier interaction
+document.querySelectorAll('.skills__data').forEach(card => {
+  card.addEventListener('click', (e) => {
+    const isOpen = card.classList.contains('is-open');
+    
+    // Close all other cards
+    document.querySelectorAll('.skills__data.is-open').forEach(openCard => {
+      if (openCard !== card) {
+        openCard.classList.remove('is-open');
+      }
+    });
+    
+    // Toggle current card
+    card.classList.toggle('is-open');
+  });
+});
+
+// Also delegate clicks within the About education container to maximize clickable area
+const aboutEducation = document.querySelector('.about__education');
+if (aboutEducation) {
+  aboutEducation.addEventListener('click', (e) => {
+    const card = e.target.closest('.education__card');
+    if (!card) return;
+    document.querySelectorAll('.education__card.is-open').forEach(openCard => {
+      if (openCard !== card) openCard.classList.remove('is-open');
+    });
+    card.classList.toggle('is-open');
+  }, { capture: true });
+}
+
+// Prevent project link clicks from toggling cards unintentionally
+document.body.addEventListener('click', (e) => {
+  const anchor = e.target.closest('.work__links a');
+  if (anchor) {
+    e.stopPropagation();
+  }
 });
