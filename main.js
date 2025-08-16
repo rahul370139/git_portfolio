@@ -1,5 +1,54 @@
 console.log('main.js script started');
 
+/*=============== THEME TOGGLE ===============*/
+// Theme toggle functionality
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+// Check for saved theme preference or default to dark
+const currentTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.setAttribute('data-theme', currentTheme);
+updateThemeIcon(currentTheme);
+
+// Theme toggle click handler
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  // Update theme
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  
+  // Update icon with smooth transition
+  updateThemeIcon(newTheme);
+  
+  // Add a subtle animation effect
+  themeToggle.style.transform = 'rotate(180deg)';
+  setTimeout(() => {
+    themeToggle.style.transform = 'rotate(0deg)';
+  }, 300);
+});
+
+// Update theme icon based on current theme
+function updateThemeIcon(theme) {
+  if (theme === 'light') {
+    themeIcon.className = 'bx bx-moon';
+    themeIcon.style.color = '#0d47a1';
+  } else {
+    themeIcon.className = 'bx bx-sun';
+    themeIcon.style.color = '#64b5f6';
+  }
+}
+
+// Check for system preference on first load
+if (!localStorage.getItem('theme')) {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const defaultTheme = prefersDark ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', defaultTheme);
+  localStorage.setItem('theme', defaultTheme);
+  updateThemeIcon(defaultTheme);
+}
+
 /*=============== TOGGLE NAV MENU ===============*/
 const showMenu = (toggleId, navId) => {
     const toggle = document.getElementById(toggleId),
