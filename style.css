@@ -1414,43 +1414,70 @@ img {
 
 /* ---------- Extras grid ---------- */
 .extra__grid{
-  display:grid;
-  gap:1.5rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
 }
-@media (min-width:600px){ 
+@media (min-width: 768px){ 
   .extra__grid{
-    grid-template-columns: repeat(3, 1fr); /* Force 3 equal columns */
-    align-items: start; /* Align cards to the top */
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch; /* Force all cards to stretch to same height */
   }
 }
 .extra__card{
-  background:var(--bg-card);
-  border-radius:.9rem;
-  box-shadow:0 2px 10px rgba(0,0,0,.06);
-  display:flex;flex-direction:column;
-  min-height:260px;           /* equal height */
-  transition:transform .3s;
-  width: 100%; /* Ensure full width */
+  background: var(--bg-card);
+  border-radius: 0.9rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 300px; /* Fixed height for all cards */
+  transition: transform 0.3s;
+  width: 100%;
 }
-.extra__card:hover{transform:translateY(-4px)}
+.extra__card:hover{
+  transform: translateY(-4px);
+}
 
 .extra__header{
-  display:flex;align-items:center;gap:.6rem;
-  padding:1rem 1.25rem;cursor:pointer;
-  font-weight:600;color:var(--color-primary);
-  border-bottom:1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-primary);
+  border-bottom: 1px solid #eee;
+  height: 80px; /* Fixed header height */
+  flex-shrink: 0;
 }
-.extra__header i:first-child{font-size:1.4rem}
-.extra__header .chevron{margin-left:auto;transition:transform .3s}
+.extra__header i:first-child{
+  font-size: 1.4rem;
+}
+.extra__header .chevron{
+  margin-left: auto;
+  transition: transform 0.3s;
+}
 
 .extra__content{
-  display:none;padding:1rem 1.25rem;flex:1;
-  font-size:.95rem;color:var(--text-color);
-  line-height:1.55;
+  display: none;
+  padding: 1rem 1.25rem;
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  line-height: 1.55;
+  overflow: hidden;
 }
-.extra__card.is-open .extra__content{display:block}
-.extra__card.is-open .chevron{transform:rotate(180deg)}
-.extra__content a{color:var(--color-primary);font-size:.85rem}
+.extra__card.is-open .extra__content{
+  display: block;
+}
+.extra__card.is-open .chevron{
+  transform: rotate(180deg);
+}
+.extra__content a{
+  color: var(--color-primary);
+  font-size: 0.85rem;
+}
 
 .extra__date {
     display: block;
