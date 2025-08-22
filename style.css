@@ -1244,7 +1244,7 @@ img {
 .extra__card-content{display:none;padding-top:1rem;border-top:1px solid #eee}
 .card--clickable.is-open .skills__data-content,
 .card--clickable.is-open .extra__card-content{display:block}
-#extras .skills__container{display:grid;grid-auto-flow:column;overflow-x:auto;gap:1.25rem;padding-bottom:.5rem}
+#extras .skills__container{display:grid;grid-auto-flow:column;overflow-x:auto;gap:1.25rem}
 
 /*========== EDUCATION ==========*/
 .about__education {
@@ -1417,7 +1417,12 @@ img {
   display:grid;
   gap:1.5rem;
 }
-@media (min-width:600px){ .extra__grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}}
+@media (min-width:600px){ 
+  .extra__grid{
+    grid-template-columns: repeat(3, 1fr); /* Force 3 equal columns */
+    align-items: start; /* Align cards to the top */
+  }
+}
 .extra__card{
   background:var(--bg-card);
   border-radius:.9rem;
@@ -1425,6 +1430,7 @@ img {
   display:flex;flex-direction:column;
   min-height:260px;           /* equal height */
   transition:transform .3s;
+  width: 100%; /* Ensure full width */
 }
 .extra__card:hover{transform:translateY(-4px)}
 
