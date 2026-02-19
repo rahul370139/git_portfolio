@@ -1,50 +1,94 @@
 [
-    {
-      "title": "SkillSpring - AI-Powered Career Guidance System",
-      "description": "Built a comprehensive AI-powered career guidance and personalized learning platform using FastAPI backend with Groq LLM integration, Cohere embeddings, and Supabase database. Features intelligent PDF processing, LLM-powered content generation (summaries, quizzes, flashcards, micro-lessons), career matching with skill gap analysis, personalized roadmap generation, and a modern frontend deployed on Vercel. Implements RAG architecture, vector search with pgvector, and sophisticated recommendation systems for career development.",
-      "image": "assets/projects/skillspring.png",
-      "date": "Summer 2025",
-      "demo": "https://skillspring001.vercel.app/",
-      "link": "https://github.com/rahul370139/SkillSpring",
-      "type": "github",
-      "context": "Self-project"
-    },
-    {
-      "title": "Multimodal Fashion Recommendation Engine",
-      "description": "Built a production-ready fashion recommendation engine using OpenAI's CLIP for joint image-text embeddings. Integrated DensePose segmentation, hybrid search with FAISS, and adaptive reranking for relevance. Designed clean, modular CLI with masked pre-processing and personalized discovery at scale.",
-      "image": "assets/projects/fashion-demo.png",
-      "date": "Spring 2024",
-      "link": "https://github.com/rahul370139/Fashion_Recommendation_model_demo",
-      "type": "github",
-      "context": "Related to UMD coursework"
-    },
-    {
-      "title": "End-to-End Stock Forecasting – Tesla (TSLA)",
-      "description": "Developed a forecasting pipeline combining technical indicators (RSI, MACD, GARCH, OBV) and FinBERT sentiment scores. Trained and tuned Random Forest, XGBoost, and LSTM-GRU hybrids using Optuna, achieving <2% MAPE. Deployed with walk-forward retraining and modular CLI for real-time use.",
-      "image": "assets/projects/tesla-forecast.png",
-      "date": "Winter 2024",
-      "link": "https://github.com/rahul370139/know_todays_market",
-      "type": "github",
-      "context": "Self-project"
-    },
-    {
-      "title": "Legal Case Summarisation Pipeline",
-      "description": "Scraped and summarized 250k+ Dutch legal rulings with structured chunking and OpenAI summarization (o3-mini, o1). Implemented retry logic, date filtering, and CSV exports. Designed batch pipelines and CLI tools for scalable legal tech and civic analysis.",
-      "image": "assets/projects/legal-summary.png",
-      "date": "Spring 2024",
-      "link": "https://github.com/rahul370139/dutch-legal-summariser",
-      "type": "github",
-      "context": "Self-project"
-    },
-    {
-      "title": "Fake News Detection – IIT (BHU) Summer Intern",
-      "description": "Designed a fake news classification system using manually labeled Twitter data and fact-checking procedures. Applied Word2Vec, GloVe, and ensemble models (Random Forest, LSTM) to achieve 94% recall. Improved information quality and trust in digital content pipelines.",
-      "image": "assets/projects/fake-news.png",
-      "date": "Summer 2019",
-      "certificate": "assets/certificates/summer_intern19.pdf",
-      "type": "certificate",
-      "institution": "IIT (BHU) Varanasi",
-      "context": "Summer intern project at IIT (BHU) Varanasi"
-    }
-  ]
-  
+  {
+    "title": "doc2data - Document-to-Data Pipeline",
+    "description": "Developed a production-ready PDF/Image-to-JSON pipeline with layout segmentation, OCR, semantic labeling stubs, and a Streamlit control panel. Architecture is CPU-friendly today, GPU-ready by design, and exposes FastAPI endpoints for downstream system integration.",
+    "image": "assets/projects/doc2data.png",
+    "date": "2026",
+    "link": "https://github.com/rahul370139/doc2data",
+    "type": "github",
+    "context": "Production AI Pipeline | OCR + Layout Intelligence"
+  },
+  {
+    "title": "MARCH-PAWS Offline RAG Assistant (Medical)",
+    "description": "Designed a fully offline medical RAG assistant that reads TCCC-style manuals and returns grounded, step-by-step MARCH-PAWS checklists. Implemented a finite-state orchestrator with BM25 + FAISS hybrid retrieval, Reciprocal Rank Fusion, cross-encoder reranking, and async/threaded inference on local Mistral-7B.",
+    "image": "assets/projects/march_paws_rag.png",
+    "date": "2025",
+    "link": "https://github.com/rahul370139/marchpaws_rag",
+    "type": "github",
+    "context": "Healthcare AI | Offline-first RAG"
+  },
+  {
+    "title": "MIMIC-CXR Radiology Report Generation",
+    "description": "Fine-tuned LLaVA-NeXT v1.6 (Mistral-7B) with LoRA on A100 to generate structured JSON radiology reports from chest X-rays, with optional EHR conditioning. Added curriculum learning, JSON-first multi-pass prompting, and A/B evaluation (image-only vs image+EHR) to improve report quality and clinical reasoning.",
+    "image": "assets/projects/mimic_cxr.png",
+    "date": "Fall2025",
+    "link": "https://github.com/rahul370139/radiology_report",
+    "type": "github",
+    "context": "Graduate research | Multimodal Medical AI"
+  },
+  {
+    "title": "Emotion-Aware NPCs (Real-time CV for Games)",
+    "description": "Built a webcam-based affect understanding system that adapts Unity NPC dialogue in real time. Combined facial emotion recognition with valence-arousal mapping, temporal smoothing (EMA + spike detection), and multi-signal fusion (FER + eye aspect ratio + head pose + optical flow) behind a FastAPI service.",
+    "image": "assets/projects/emotion_aware_npc.png",
+    "date": "Fall2025",
+    "link": "https://github.com/rahul370139/EmotionAwareNPCs",
+    "type": "github",
+    "context": "Self-project | Real-time AI + Game Systems"
+  },
+  {
+    "title": "RadStream - Cloud-Native Medical Imaging Pipeline",
+    "description": "Designed an AWS-first medical imaging architecture for low-latency ingestion and scalable inference using serverless orchestration and EKS/Triton serving. Streamed telemetry into a data lake stack (S3/Glue/Athena/QuickSight) with security controls (IAM/WAF/GuardDuty) for observable, secure clinical workflows.",
+    "image": "assets/projects/Radstream_cloud.png",
+    "date": "Fall 2025",
+    "link": "https://github.com/rahul370139/Radstream",
+    "type": "github",
+    "context": "Cloud Architecture | MLOps | Healthcare"
+  },
+  {
+    "title": "SkillSpring - AI-Powered Career Guidance System",
+    "description": "Built a full-stack AI learning and career platform with FastAPI, Groq LLM integration, Cohere embeddings, and Supabase. Includes PDF intelligence, AI-generated summaries/quizzes/flashcards/micro-lessons, skill-gap analysis, roadmap generation, and production deployment via Railway + Vercel.",
+    "image": "assets/projects/skillspring.png",
+    "date": "Summer 2025",
+    "demo": "https://skillspring001.vercel.app/",
+    "link": "https://github.com/rahul370139/SkillSpring",
+    "type": "github",
+    "context": "Self-project | Full-stack GenAI Product"
+  },
+  {
+    "title": "Multimodal Fashion Recommendation Engine",
+    "description": "Fine-tuned CLIP vision/text encoders with BLIP-generated captions and segmentation masks for stronger text-image alignment. Integrated adaptive query reweighting and FAISS retrieval, achieving 88% Mean Opinion Score against human relevance judgments.",
+    "image": "assets/projects/fashion-demo.png",
+    "date": "Spring 2024",
+    "link": "https://github.com/rahul370139/Fashion_Recommendation_model_demo",
+    "type": "github",
+    "context": "UMD project | Multimodal Retrieval"
+  },
+  {
+    "title": "End-to-End Stock Forecasting - Tesla (TSLA)",
+    "description": "Built a modular forecasting stack combining technical indicators, FinBERT sentiment, and ensemble models (RF/XGBoost/LSTM-GRU) with Optuna tuning and walk-forward validation. Achieved <2% MAPE in controlled backtesting workflows.",
+    "image": "assets/projects/tesla-forecast.png",
+    "date": "Winter 2024",
+    "link": "https://github.com/rahul370139/know_todays_market",
+    "type": "github",
+    "context": "Self-project | Time-Series + Financial NLP"
+  },
+  {
+    "title": "Legal Case Summarisation Pipeline",
+    "description": "Scraped and summarized 250k+ Dutch legal rulings with robust chunking, batch orchestration, retry logic, and evaluation-ready outputs. Built scalable CLI tooling for legal analytics and civic-tech workflows.",
+    "image": "assets/projects/legal-summary.png",
+    "date": "Spring 2024",
+    "link": "https://github.com/rahul370139/dutch-legal-summariser",
+    "type": "github",
+    "context": "Self-project | Legal NLP"
+  },
+  {
+    "title": "Fake News Detection - IIT (BHU) Summer Intern",
+    "description": "Designed a fake-news classifier using manually labeled social data and fact-checking workflows. Combined Word2Vec/GloVe representations with Random Forest + LSTM models to reach 94% recall and improve trust in content triaging pipelines.",
+    "image": "assets/projects/fake-news.png",
+    "date": "Summer 2019",
+    "certificate": "assets/certificates/summer_intern19.pdf",
+    "type": "certificate",
+    "institution": "IIT (BHU) Varanasi",
+    "context": "Summer intern project at IIT (BHU) Varanasi"
+  }
+]
