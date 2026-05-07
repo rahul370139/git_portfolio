@@ -437,9 +437,13 @@ document.body.addEventListener('click', (e) => {
   const body = e.target.closest('.project__architecture .project__architecture-body');
   if (!body) return;
 
+  // Preserve native behavior for links and other interactive controls.
+  if (e.target.closest('a, button, summary, input, select, textarea, label')) {
+    return;
+  }
+
   const details = body.closest('.project__architecture');
   if (!details || details.open) return;
 
-  e.preventDefault();
   details.open = true;
 });

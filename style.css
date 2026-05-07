@@ -1471,6 +1471,14 @@ img {
 }
 
 .project__architecture:not([open]) .project__diagram-preview {
+  pointer-events: none;
+}
+
+.project__architecture[open] .project__diagram-preview {
+  pointer-events: auto;
+}
+
+.project__architecture:not([open]) .project__diagram-preview {
   border-color: rgba(100, 181, 246, 0.45);
   box-shadow: inset 0 0 0 1px rgba(100, 181, 246, 0.2);
 }
