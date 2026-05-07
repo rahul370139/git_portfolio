@@ -1,94 +1,217 @@
 [
   {
-    "title": "doc2data - Document-to-Data Pipeline",
-    "description": "Developed a production-ready PDF/Image-to-JSON pipeline with layout segmentation, OCR, semantic labeling stubs, and a Streamlit control panel. Architecture is CPU-friendly today, GPU-ready by design, and exposes FastAPI endpoints for downstream system integration.",
+    "title": "AI Cargo Monitor - Pharmaceutical Cold-Chain Risk Intelligence",
+    "description": "Designed a production-style cold-chain risk intelligence platform for pharmaceutical logistics. The system ingests shipment windows from Supabase with local fallback, computes product-aware risk features, fuses deterministic GDP/FDA-style rules with XGBoost spoilage probability, and routes medium/high risk cases into a LangGraph orchestration loop. Specialized tools execute compliance checks, rerouting, cold-storage search, scheduling, insurance preparation, stakeholder communication, and approval gating. FastAPI and a React dashboard expose live risk tiers, actions, evidence logs, and human review decisions for complete operational traceability.",
+    "highlights": [
+      "Hybrid scoring blends deterministic FDA/GDP-style rules with ML probabilities, SHAP explanations, and deterministic vetoes for high-risk events.",
+      "Agentic layer uses plan, execute, observe, reflect, revise, and human-review states so automated actions remain auditable.",
+      "Compliance agent uses pgvector-backed RAG plus fallback regulations to produce traceable validation events."
+    ],
+    "image": "assets/projects/aicargo.png",
+    "date": "Spring 2026",
+    "link": "https://github.com/nsumesh/SmithAgenticAIChallenge",
+    "type": "github",
+    "context": "Agentic AI | Cold Chain | Compliance",
+    "architecture": [
+      {
+        "label": "System architecture",
+        "path": "assets/artitecture_diagram/aicargo_sa.pdf"
+      },
+      {
+        "label": "Data flow",
+        "path": "assets/artitecture_diagram/aicargo_df.pdf"
+      }
+    ]
+  },
+  {
+    "title": "doc2data - Healthcare Document-to-Data Pipeline",
+    "description": "Built an end-to-end healthcare document extraction platform that converts CMS-1500 and UB-04 PDFs/images into validated JSON. A LangGraph orchestrator performs form identification, lane planning (widgets, digital text, or scan OCR), template alignment, OCR execution, typed validation, targeted VLM rescue, and final business mapping. The output includes extracted values, confidence, bounding boxes, QA notes, and debug traces. Delivery includes FastAPI APIs, streaming progress events, and a Next.js review interface suitable for operator-in-the-loop workflows.",
+    "highlights": [
+      "Three-lane extraction handles fillable widgets, digital text layers, and scanned or handwritten forms without forcing every document through OCR.",
+      "Batched Florence-2 OCR plus adaptive blank detection reduced heavy scan extraction from multi-minute runs to roughly 20-40 seconds.",
+      "Final output includes extracted fields, confidence, bounding boxes, business mappings, validation diagnostics, debug traces, and Reducto-style export."
+    ],
     "image": "assets/projects/doc2data.png",
-    "date": "2026",
+    "date": "Spring 2026",
+    "demo": "https://thinkray.space",
     "link": "https://github.com/rahul370139/doc2data",
     "type": "github",
-    "context": "Production AI Pipeline | OCR + Layout Intelligence"
+    "context": "Production AI Pipeline | OCR + Layout Intelligence",
+    "architecture": [
+      {
+        "label": "System architecture",
+        "path": "assets/artitecture_diagram/doc2data_sa.pdf"
+      }
+    ]
+  },
+  {
+    "title": "SkillSpring - AI-Powered Career Guidance System",
+    "description": "Engineered a full-stack AI learning and career platform that connects learning workflows to career outcomes. The Next.js + FastAPI system supports PDF-grounded chat, summary/quiz/lesson generation, diagnostics, and mastery tracking, then extends into resume parsing, O*NET-based role matching, skill-gap analysis, and roadmap generation. The architecture combines Groq generation, Cohere embeddings, Supabase Postgres/pgvector persistence, and a dashboard layer for progress analytics, recommendations, and longitudinal learning visibility.",
+    "highlights": [
+      "One learning generation path routes quick actions through a shared distiller so the UI stays consistent across summaries, quizzes, lessons, flashcards, and diagnostics.",
+      "Career planner parses resumes, matches target roles against O*NET data, and returns market-aware upgrade plans.",
+      "Dashboard and mastery modules persist user progress, recommendations, achievements, and latest career-plan snapshots."
+    ],
+    "image": "assets/projects/skillspring.png",
+    "date": "Summer 2025",
+    "demo": "https://skillspring001.vercel.app/",
+    "link": "https://github.com/rahul370139/easylearn",
+    "type": "github",
+    "context": "Full-stack GenAI Product | Learning + Career",
+    "architecture": [
+      {
+        "label": "High-level architecture",
+        "path": "assets/artitecture_diagram/skillspring_sa_hl.pdf"
+      },
+      {
+        "label": "System architecture",
+        "path": "assets/artitecture_diagram/skillspring_sa.pdf"
+      }
+    ]
+  },
+  {
+    "title": "GPU Cloud Benchmark - Reproducible GPU Selection Engine",
+    "description": "Built a reproducible cloud benchmarking and recommendation engine for selecting GPUs across DGX Spark GB10, AWS A10G/T4/L4, and local CPU baselines. The framework executes workload matrices in deterministic containers, captures throughput, latency percentiles, utilization, memory, power, cost, and environment manifests, and stores results in an SQLite history for repeatable analysis. A multi-criteria recommender and KNN no-run predictor then suggest best-fit GPU choices under cost or latency constraints, with infrastructure support for Terraform, k3s jobs, and report generation.",
+    "highlights": [
+      "Benchmarked five model families: ResNet-50, BERT-base, CLIP image embeddings, example MLP, and lightweight LLM text generation.",
+      "Infrastructure path covers Terraform, k3s/Kubernetes jobs, S3 artifacts, Prometheus/Pushgateway metrics, and GitHub Actions validation.",
+      "Unified history reached 187 runs in the final report, with an 80% leave-one-workload-out winner-match score for no-run GPU prediction."
+    ],
+    "image": "assets/projects/gpu_cloud_benchmark.png",
+    "date": "Spring 2026",
+    "link": "https://github.com/rahul370139/gpu_cloud_benchmark",
+    "type": "github",
+    "context": "Cloud MLOps | Benchmarking | Recommendation",
+    "architecture": [
+      {
+        "label": "System architecture",
+        "path": "assets/artitecture_diagram/gpu_cloud_sa.pdf"
+      }
+    ]
   },
   {
     "title": "MARCH-PAWS Offline RAG Assistant (Medical)",
-    "description": "Designed a fully offline medical RAG assistant that reads TCCC-style manuals and returns grounded, step-by-step MARCH-PAWS checklists. Implemented a finite-state orchestrator with BM25 + FAISS hybrid retrieval, Reciprocal Rank Fusion, cross-encoder reranking, and async/threaded inference on local Mistral-7B.",
+    "description": "Designed a fully offline medical RAG assistant for tactical emergency care workflows. The system reads TCCC-style manuals, retrieves relevant passages with BM25 and FAISS, fuses rankings with Reciprocal Rank Fusion, reranks evidence with a cross-encoder, and guides the user through grounded MARCH-PAWS checklists using a finite-state orchestrator and local Mistral-7B inference.",
+    "highlights": [
+      "Offline-first design keeps retrieval, ranking, generation, and checklist logic available without cloud connectivity.",
+      "State machine separates assessment, intervention, citation, and next-step behavior for safer clinical usability.",
+      "Hybrid retrieval and reranking improve evidence grounding before checklist generation."
+    ],
     "image": "assets/projects/march_paws_rag.png",
-    "date": "2025",
+    "date": "Fall 2025",
     "link": "https://github.com/rahul370139/marchpaws_rag",
     "type": "github",
-    "context": "Healthcare AI | Offline-first RAG"
+    "context": "Healthcare AI | Offline-first RAG",
+    "architecture": [
+      {
+        "label": "System architecture",
+        "path": "assets/artitecture_diagram/marchpaws_sa.pdf"
+      }
+    ]
   },
   {
     "title": "MIMIC-CXR Radiology Report Generation",
-    "description": "Fine-tuned LLaVA-NeXT v1.6 (Mistral-7B) with LoRA on A100 to generate structured JSON radiology reports from chest X-rays, with optional EHR conditioning. Added curriculum learning, JSON-first multi-pass prompting, and A/B evaluation (image-only vs image+EHR) to improve report quality and clinical reasoning.",
+    "description": "Fine-tuned LLaVA-NeXT v1.6 with LoRA on A100 to generate structured JSON radiology reports from chest X-rays, with optional EHR conditioning. The project includes data preparation, curriculum learning, JSON-first multi-pass prompting, image-only versus image-plus-EHR comparisons, and evaluation workflows focused on report quality, clinical consistency, and reasoning robustness.",
+    "highlights": [
+      "Built a multimodal reporting path that accepts radiology images and optional metadata context.",
+      "Used LoRA fine-tuning to adapt a large vision-language model without full-parameter training.",
+      "Designed A/B evaluation to compare image-only and EHR-conditioned outputs."
+    ],
     "image": "assets/projects/mimic_cxr.png",
-    "date": "Fall2025",
+    "date": "Fall 2025",
     "link": "https://github.com/rahul370139/radiology_report",
     "type": "github",
-    "context": "Graduate research | Multimodal Medical AI"
+    "context": "Graduate Research | Multimodal Medical AI"
   },
   {
-    "title": "Emotion-Aware NPCs (Real-time CV for Games)",
-    "description": "Built a webcam-based affect understanding system that adapts Unity NPC dialogue in real time. Combined facial emotion recognition with valence-arousal mapping, temporal smoothing (EMA + spike detection), and multi-signal fusion (FER + eye aspect ratio + head pose + optical flow) behind a FastAPI service.",
+    "title": "Emotion-Aware NPCs - Real-time CV for Games",
+    "description": "Built a webcam-based affect understanding service that adapts Unity NPC dialogue in real time. The FastAPI service combines facial emotion recognition, valence-arousal mapping, exponential moving average smoothing, spike detection, and multi-signal fusion from face emotion, eye aspect ratio, head pose, and optical flow so game characters can react to the player's visible state.",
+    "highlights": [
+      "Separated real-time perception from Unity gameplay through an API boundary.",
+      "Smoothed noisy frame-level emotion predictions before sending dialogue-control signals.",
+      "Designed fusion logic to combine facial, gaze, pose, and motion cues."
+    ],
     "image": "assets/projects/emotion_aware_npc.png",
-    "date": "Fall2025",
+    "date": "Fall 2025",
     "link": "https://github.com/rahul370139/EmotionAwareNPCs",
     "type": "github",
-    "context": "Self-project | Real-time AI + Game Systems"
+    "context": "Real-time AI | Game Systems"
   },
   {
     "title": "RadStream - Cloud-Native Medical Imaging Pipeline",
-    "description": "Designed an AWS-first medical imaging architecture for low-latency ingestion and scalable inference using serverless orchestration and EKS/Triton serving. Streamed telemetry into a data lake stack (S3/Glue/Athena/QuickSight) with security controls (IAM/WAF/GuardDuty) for observable, secure clinical workflows.",
+    "description": "Designed an AWS-first medical imaging architecture for low-latency ingestion, scalable inference, telemetry storage, analytics, and security. The proposed pipeline uses serverless orchestration, EKS/Triton serving, S3/Glue/Athena/QuickSight analytics, and AWS security controls so imaging workflows can move from upload to model output to operational reporting with cloud-native observability.",
+    "highlights": [
+      "Architecture covers ingestion, model serving, data lake storage, analytics, IAM/WAF/GuardDuty controls, and dashboards.",
+      "Triton and EKS are used as the scalable inference path for medical-image workloads.",
+      "Designed for secure, observable clinical AI workflows rather than a standalone notebook demo."
+    ],
     "image": "assets/projects/Radstream_cloud.png",
     "date": "Fall 2025",
     "link": "https://github.com/rahul370139/Radstream",
     "type": "github",
-    "context": "Cloud Architecture | MLOps | Healthcare"
-  },
-  {
-    "title": "SkillSpring - AI-Powered Career Guidance System",
-    "description": "Built a full-stack AI learning and career platform with FastAPI, Groq LLM integration, Cohere embeddings, and Supabase. Includes PDF intelligence, AI-generated summaries/quizzes/flashcards/micro-lessons, skill-gap analysis, roadmap generation, and production deployment via Railway + Vercel.",
-    "image": "assets/projects/skillspring.png",
-    "date": "Summer 2025",
-    "demo": "https://skillspring001.vercel.app/",
-    "link": "https://github.com/rahul370139/SkillSpring",
-    "type": "github",
-    "context": "Self-project | Full-stack GenAI Product"
+    "context": "Cloud Architecture | MLOps | Healthcare",
+    "architecture": [
+      {
+        "label": "System architecture",
+        "path": "assets/artitecture_diagram/radstream_sa.pdf"
+      }
+    ]
   },
   {
     "title": "Multimodal Fashion Recommendation Engine",
-    "description": "Fine-tuned CLIP vision/text encoders with BLIP-generated captions and segmentation masks for stronger text-image alignment. Integrated adaptive query reweighting and FAISS retrieval, achieving 88% Mean Opinion Score against human relevance judgments.",
+    "description": "Built a multimodal retrieval engine that recommends fashion items from text and image signals. The system fine-tunes CLIP vision/text encoders, uses BLIP-generated captions and segmentation masks to strengthen item representations, applies adaptive query reweighting, and indexes embeddings with FAISS so user intent can be matched to relevant products at interactive speed.",
+    "highlights": [
+      "Improved text-image alignment through caption-enriched and mask-aware representations.",
+      "Used FAISS for scalable nearest-neighbor retrieval.",
+      "Reached 88% Mean Opinion Score against human relevance judgments."
+    ],
     "image": "assets/projects/fashion-demo.png",
     "date": "Spring 2024",
     "link": "https://github.com/rahul370139/Fashion_Recommendation_model_demo",
     "type": "github",
-    "context": "UMD project | Multimodal Retrieval"
+    "context": "UMD Project | Multimodal Retrieval"
   },
   {
     "title": "End-to-End Stock Forecasting - Tesla (TSLA)",
-    "description": "Built a modular forecasting stack combining technical indicators, FinBERT sentiment, and ensemble models (RF/XGBoost/LSTM-GRU) with Optuna tuning and walk-forward validation. Achieved <2% MAPE in controlled backtesting workflows.",
+    "description": "Built a modular forecasting workflow for TSLA that combines market data, technical indicators, FinBERT sentiment features, and ensemble models such as Random Forest, XGBoost, and LSTM-GRU. The system uses Optuna tuning, walk-forward validation, and backtesting diagnostics to compare model behavior under time-aware splits instead of random leakage-prone validation.",
+    "highlights": [
+      "Combined structured price indicators with financial NLP sentiment features.",
+      "Used walk-forward validation to evaluate behavior closer to real trading chronology.",
+      "Achieved sub-2% MAPE in controlled backtesting workflows."
+    ],
     "image": "assets/projects/tesla-forecast.png",
     "date": "Winter 2024",
     "link": "https://github.com/rahul370139/know_todays_market",
     "type": "github",
-    "context": "Self-project | Time-Series + Financial NLP"
+    "context": "Time-Series | Financial NLP"
   },
   {
     "title": "Legal Case Summarisation Pipeline",
-    "description": "Scraped and summarized 250k+ Dutch legal rulings with robust chunking, batch orchestration, retry logic, and evaluation-ready outputs. Built scalable CLI tooling for legal analytics and civic-tech workflows.",
+    "description": "Built a scalable legal NLP pipeline for scraping, chunking, summarizing, and exporting large volumes of Dutch legal rulings. The project emphasizes robust batch orchestration, retry logic, evaluation-ready outputs, and command-line workflows that make long-running document summarization reproducible for legal analytics and civic-tech use cases.",
+    "highlights": [
+      "Processed a 250k+ ruling corpus with chunk-aware summarization.",
+      "Added retry and batch-control logic for long-running jobs.",
+      "Produced structured outputs suitable for downstream legal search and analysis."
+    ],
     "image": "assets/projects/legal-summary.png",
     "date": "Spring 2024",
     "link": "https://github.com/rahul370139/dutch-legal-summariser",
     "type": "github",
-    "context": "Self-project | Legal NLP"
+    "context": "Legal NLP | Document Automation"
   },
   {
     "title": "Fake News Detection - IIT (BHU) Summer Intern",
-    "description": "Designed a fake-news classifier using manually labeled social data and fact-checking workflows. Combined Word2Vec/GloVe representations with Random Forest + LSTM models to reach 94% recall and improve trust in content triaging pipelines.",
+    "description": "Designed a fake-news classification workflow using manually labeled social data, fact-checking steps, classical ML features, and neural sequence models. The project compared Word2Vec/GloVe representations with Random Forest and LSTM classifiers to improve recall for content-triage scenarios where missing harmful misinformation is costly.",
+    "highlights": [
+      "Built the labeling and modeling workflow during a summer internship at IIT (BHU) Varanasi.",
+      "Compared classical and neural NLP models for trust and safety classification.",
+      "Reached 94% recall in the internship evaluation setup."
+    ],
     "image": "assets/projects/fake-news.png",
     "date": "Summer 2019",
     "certificate": "assets/certificates/summer_intern19.pdf",
     "type": "certificate",
     "institution": "IIT (BHU) Varanasi",
-    "context": "Summer intern project at IIT (BHU) Varanasi"
+    "context": "Summer Intern Project | Trust and Safety NLP"
   }
 ]

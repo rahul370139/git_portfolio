@@ -121,6 +121,10 @@ console.log('Scroll active setup complete');
 // Click-to-reveal cards - for static cards
 document.addEventListener('DOMContentLoaded', function() {
     document.body.addEventListener('click', function(event) {
+        if (event.target.closest('.work__links a, .project__architecture, .work-sample__links a, .publication__link')) {
+            return;
+        }
+
         // Consolidated logic for all clickable cards (Projects, Skills, Extras)
         const clickedCard = event.target.closest('.card--clickable');
         console.log('Card click event triggered', event.target);
@@ -243,6 +247,48 @@ document.body.addEventListener('click', e=>{
 });
 
 /*=============== LOAD PROJECTS FROM JSON ===============*/
+function normalizeArchitecture(diagrams) {
+    if (!diagrams) return [];
+    return Array.isArray(diagrams) ? diagrams : [diagrams];
+}
+
+function renderArchitecture(diagrams) {
+    const architecture = normalizeArchitecture(diagrams);
+    if (!architecture.length) return '';
+
+    const links = architecture.map((diagram, index) => `
+        <a class="project__diagram-link" href="${diagram.path}" target="_blank" rel="noopener">
+            <i class='bx bx-sitemap'></i>
+            <span>${diagram.label || `Architecture ${index + 1}`}</span>
+        </a>
+    `).join('');
+
+    const primary = architecture[0];
+    return `
+        <details class="project__architecture">
+            <summary>
+                <span><i class='bx bx-git-branch'></i> Architecture diagrams</span>
+                <i class='bx bx-chevron-down'></i>
+            </summary>
+            <div class="project__architecture-body">
+                <div class="project__diagram-links">${links}</div>
+                <object class="project__diagram-preview" data="${primary.path}#toolbar=0&navpanes=0" type="application/pdf">
+                    <a href="${primary.path}" target="_blank" rel="noopener">Open ${primary.label || 'architecture diagram'}</a>
+                </object>
+            </div>
+        </details>
+    `;
+}
+
+function renderHighlights(highlights) {
+    if (!Array.isArray(highlights) || highlights.length === 0) return '';
+    return `
+        <ul class="project__highlights">
+            ${highlights.map((item) => `<li>${item}</li>`).join('')}
+        </ul>
+    `;
+}
+
 fetch("projects.json")
     .then((res) => {
         if (!res.ok) {
@@ -289,9 +335,17 @@ fetch("projects.json")
                 const detailContent = document.createElement("div");
                 detailContent.className = "card__detail";
                 detailContent.innerHTML = `
-                    <span class=\"work__date\">${proj.date}</span>
-                    ${proj.context ? `<span class=\"project__context\">${proj.context}</span>` : ''}
-                    <p>${proj.description}</p>
+                    <div class=\"project__meta\">
+                        <span class=\"work__date\">${proj.date}</span>
+                        ${proj.context ? `<span class=\"project__context\">${proj.context}</span>` : ''}
+                    </div>
+                    <div class=\"project__detail-grid\">
+                        <div class=\"project__narrative\">
+                            <p>${proj.description}</p>
+                            ${renderHighlights(proj.highlights)}
+                        </div>
+                        ${renderArchitecture(proj.architecture)}
+                    </div>
                     <div class=\"work__links\">
                         ${proj.demo ? `
                             <a href=\"${proj.demo ? proj.demo.trim() : ''}\" class=\"work__link\" target=\"_blank\" rel=\"noopener\">
@@ -371,7 +425,7 @@ if (aboutEducation) {
 
 // Prevent project link clicks from toggling cards unintentionally
 document.body.addEventListener('click', (e) => {
-  const anchor = e.target.closest('.work__links a');
+  const anchor = e.target.closest('.work__links a, .project__architecture a, .project__architecture summary, .work-sample__links a, .publication__link');
   if (anchor) {
     e.stopPropagation();
   }
