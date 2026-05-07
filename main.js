@@ -271,6 +271,7 @@ function renderArchitecture(diagrams) {
                 <i class='bx bx-chevron-down'></i>
             </summary>
             <div class="project__architecture-body">
+                <div class="project__architecture-hint"><i class='bx bx-expand'></i> Click preview to expand</div>
                 <div class="project__diagram-links">${links}</div>
                 <object class="project__diagram-preview" data="${primary.path}#toolbar=0&navpanes=0" type="application/pdf">
                     <a href="${primary.path}" target="_blank" rel="noopener">Open ${primary.label || 'architecture diagram'}</a>
@@ -429,4 +430,16 @@ document.body.addEventListener('click', (e) => {
   if (anchor) {
     e.stopPropagation();
   }
+});
+
+// Make entire architecture preview area clickable to expand
+document.body.addEventListener('click', (e) => {
+  const body = e.target.closest('.project__architecture .project__architecture-body');
+  if (!body) return;
+
+  const details = body.closest('.project__architecture');
+  if (!details || details.open) return;
+
+  e.preventDefault();
+  details.open = true;
 });
