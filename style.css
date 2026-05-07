@@ -1006,11 +1006,6 @@ img {
   animation-delay: 0.6s;
 }
 
-/* Hide project container initially */
-#projects-container {
-    /* Reverted to not hide initially to restore visibility */
-}
-
 .project__context{
   display:inline-block;
   margin-bottom:.75rem;
@@ -1466,6 +1461,33 @@ img {
   background: var(--bg-main);
 }
 
+.project__diagram-preview-wrap {
+  position: relative;
+}
+
+.project__preview-overlay {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  border-radius: 6px;
+  background: linear-gradient(180deg, rgba(13, 71, 161, 0.06), rgba(13, 71, 161, 0.24));
+  color: #fff;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.project__preview-overlay i {
+  font-size: 1.1rem;
+}
+
 .project__architecture:not([open]) .project__architecture-body {
   cursor: pointer;
 }
@@ -1476,6 +1498,14 @@ img {
 
 .project__architecture[open] .project__diagram-preview {
   pointer-events: auto;
+}
+
+.project__architecture:not([open]) .project__preview-overlay {
+  opacity: 1;
+}
+
+.project__architecture[open] .project__preview-overlay {
+  display: none;
 }
 
 .project__architecture:not([open]) .project__diagram-preview {

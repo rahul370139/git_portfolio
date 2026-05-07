@@ -273,9 +273,15 @@ function renderArchitecture(diagrams) {
             <div class="project__architecture-body">
                 <div class="project__architecture-hint"><i class='bx bx-expand'></i> Click preview to expand</div>
                 <div class="project__diagram-links">${links}</div>
-                <object class="project__diagram-preview" data="${primary.path}#toolbar=0&navpanes=0" type="application/pdf">
-                    <a href="${primary.path}" target="_blank" rel="noopener">Open ${primary.label || 'architecture diagram'}</a>
-                </object>
+                <div class="project__diagram-preview-wrap">
+                    <object class="project__diagram-preview" data="${primary.path}#toolbar=0&navpanes=0" type="application/pdf">
+                        <a href="${primary.path}" target="_blank" rel="noopener">Open ${primary.label || 'architecture diagram'}</a>
+                    </object>
+                    <button type="button" class="project__preview-overlay" aria-label="Expand architecture preview">
+                        <i class='bx bx-expand-alt'></i>
+                        <span>Click diagram to expand</span>
+                    </button>
+                </div>
             </div>
         </details>
     `;
@@ -446,4 +452,17 @@ document.body.addEventListener('click', (e) => {
   if (!details || details.open) return;
 
   details.open = true;
+});
+
+// Reliable expand trigger when user clicks the diagram preview area
+document.body.addEventListener('click', (e) => {
+  const overlay = e.target.closest('.project__preview-overlay');
+  if (!overlay) return;
+
+  const details = overlay.closest('.project__architecture');
+  if (!details) return;
+
+  details.open = true;
+  e.preventDefault();
+  e.stopPropagation();
 });
