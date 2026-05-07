@@ -68,10 +68,10 @@ Temperature-sensitive logistics requires immediate, compliant, and auditable dec
 - `assets/artitecture_diagram/aicargo_df.pdf`
 
 ### Demo
-- [Add Demo Link]
+- https://ai-cargo-monitor-prod.vercel.app/
 
 ### GitHub
-- https://github.com/nsumesh/SmithAgenticAIChallenge
+- https://github.com/rahul370139/SmithAgenticAIChallenge
 
 ### Tech Stack
 - Python, FastAPI, LangGraph, XGBoost, SHAP, Optuna, Supabase, React, Tailwind
@@ -130,7 +130,7 @@ Together, these projects show system design depth across user-facing UX, AI orch
 
 ## Link Placeholders (To Be Finalized)
 
-- AI Cargo demo: `[Add Demo Link]`
+- AI Cargo demo: `Added`
 - Additional repository links (if needed): `[Add GitHub Link]`
 - External architecture links (if moved): `[Add External URL]`
 

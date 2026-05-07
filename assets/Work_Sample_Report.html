@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rahul Sharma - Work Sample Portfolio</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --ink: #11203a;
+      --muted: #4d5f7d;
+      --brand: #1f4bd8;
+      --accent: #0c8c6f;
+      --line: #dde4f2;
+      --shadow: 0 18px 40px rgba(17, 32, 58, 0.1);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: 1050px;
+      margin: 30px auto;
+      padding: 0 18px 30px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #17358f 0%, #1f4bd8 45%, #3b67ea 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 1.9rem;
+      letter-spacing: 0.2px;
+    }
+
+    .hero p {
+      margin: 0;
+      opacity: 0.95;
+      max-width: 860px;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+      font-size: 0.95rem;
+    }
+
+    .meta div {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    .section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 16px rgba(17, 32, 58, 0.05);
+      padding: 22px 22px 18px;
+      margin: 14px 0;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      color: var(--brand);
+      font-size: 1.28rem;
+    }
+
+    h3 {
+      margin: 14px 0 6px;
+      color: #1a305e;
+      font-size: 1rem;
+    }
+
+    p {
+      margin: 6px 0 10px;
+      color: var(--muted);
+    }
+
+    ul, ol {
+      margin: 8px 0 12px;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    li { margin: 5px 0; }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 8px 0 12px;
+    }
+
+    .pill {
+      background: #eef3ff;
+      color: #294a97;
+      border: 1px solid #cfd9f7;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      padding: 4px 10px;
+    }
+
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 8px 14px;
+      margin: 10px 0 8px;
+    }
+
+    .links a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dashed rgba(31, 75, 216, 0.35);
+      width: fit-content;
+    }
+
+    .links a:hover {
+      border-bottom-color: var(--brand);
+    }
+
+    .impact {
+      background: #f5fbf9;
+      border: 1px solid #d5eee6;
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-top: 10px;
+    }
+
+    .impact strong {
+      color: #146b56;
+    }
+
+    .diagram-group {
+      margin: 8px 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fafcff;
+    }
+
+    .diagram-group summary {
+      cursor: pointer;
+      padding: 10px 12px;
+      font-weight: 700;
+      color: var(--brand);
+      background: #f1f5ff;
+    }
+
+    .diagram-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+      padding: 10px 12px 12px;
+    }
+
+    .diagram-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 8px;
+    }
+
+    .diagram-card h4 {
+      margin: 0 0 6px;
+      font-size: 0.85rem;
+      color: #1a305e;
+    }
+
+    .diagram-card object {
+      width: 100%;
+      height: 220px;
+      border: 1px solid #e2e8f5;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .footer {
+      text-align: center;
+      color: #5f6f8f;
+      font-size: 0.9rem;
+      margin-top: 18px;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .section, .hero {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      a {
+        color: #1f4bd8;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <h1>Rahul Sharma - Work Sample Portfolio</h1>
+      <p>
+        Prepared for hiring managers and technical interview loops.
+      </p>
+      <div class="meta">
+        <div><strong>Profile:</strong> Data Scientist / AI Engineer</div>
+        <div><strong>Experience:</strong> 5+ years in production ML and GenAI systems</div>
+        <div><strong>Core Themes:</strong> Agentic AI, RAG, multimodal pipelines, MLOps</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Candidate Snapshot</h2>
+      <ul>
+        <li><strong>Name:</strong> Rahul Sharma</li>
+        <li><strong>Profile:</strong> Data Scientist / AI Engineer</li>
+        <li><strong>Experience:</strong> 5+ years in production ML, GenAI systems, and applied analytics</li>
+        <li><strong>Core themes:</strong> Agentic AI, RAG, multimodal pipelines, MLOps, cloud deployment</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Project 01 - SkillSpring (TrainPI)</h2>
+      <div class="pill-row">
+        <span class="pill">Full-stack GenAI</span>
+        <span class="pill">Learning Intelligence</span>
+        <span class="pill">Career Planning</span>
+      </div>
+      <h3>Overview</h3>
+      <p>SkillSpring is a full-stack AI learning and career guidance platform that helps users turn unstructured learning material into actionable outcomes. It includes content distillation, assessment generation, mastery tracking, career matching, and roadmap planning.</p>
+      <h3>Problem Solved</h3>
+      <p>Learners and career switchers often have fragmented material and no reliable path from "learning content" to "role-ready action plan." SkillSpring addresses this gap through integrated learning + career intelligence.</p>
+      <h3>End-to-End System Scope</h3>
+      <ol>
+        <li>PDF ingestion and context-grounded chat/distillation.</li>
+        <li>Automated generation of summaries, quizzes, flashcards, lessons, and diagnostics.</li>
+        <li>Resume parsing and O*NET-backed role matching.</li>
+        <li>Skill-gap analysis and roadmap recommendations.</li>
+        <li>Dashboard persistence for mastery and progress visibility.</li>
+      </ol>
+      <h3>Architecture Diagram</h3>
+      <div class="links">
+        <a href="artitecture_diagram/skillspring_sa_hl.pdf" target="_blank" rel="noopener">assets/artitecture_diagram/skillspring_sa_hl.pdf</a>
+        <a href="artitecture_diagram/skillspring_sa.pdf" target="_blank" rel="noopener">assets/artitecture_diagram/skillspring_sa.pdf</a>
+      </div>
+      <details class="diagram-group">
+        <summary>Preview Architecture Diagrams</summary>
+        <div class="diagram-grid">
+          <div class="diagram-card">
+            <h4>High-Level Architecture</h4>
+            <object data="artitecture_diagram/skillspring_sa_hl.pdf#toolbar=0&navpanes=0" type="application/pdf"></object>
+          </div>
+          <div class="diagram-card">
+            <h4>System Architecture</h4>
+            <object data="artitecture_diagram/skillspring_sa.pdf#toolbar=0&navpanes=0" type="application/pdf"></object>
+          </div>
+        </div>
+      </details>
+      <h3>Demo</h3>
+      <div class="links">
+        <a href="https://skillspring001.vercel.app/" target="_blank" rel="noopener">https://skillspring001.vercel.app/</a>
+      </div>
+      <h3>GitHub</h3>
+      <div class="links">
+        <a href="https://github.com/rahul370139/easylearn" target="_blank" rel="noopener">https://github.com/rahul370139/easylearn</a>
+      </div>
+      <h3>Tech Stack</h3>
+      <p>Next.js, FastAPI, Groq, Cohere embeddings, Supabase Postgres/pgvector, Docker, Vercel.</p>
+      <div class="impact"><strong>Business Impact Narrative:</strong> Converts passive content consumption into guided learning plans, bridges education and employability with role-based skill-gap workflows, and showcases practical AI product delivery.</div>
+    </section>
+
+    <section class="section">
+      <h2>Project 02 - AI Cargo</h2>
+      <div class="pill-row">
+        <span class="pill">Agentic Operations</span>
+        <span class="pill">Cold-chain Risk</span>
+        <span class="pill">Compliance AI</span>
+      </div>
+      <h3>Overview</h3>
+      <p>AI Cargo is an agentic risk intelligence platform for pharmaceutical cold-chain shipments. It combines deterministic compliance rules and ML predictions, then orchestrates mitigation workflows through tool-using agents with human-in-the-loop controls.</p>
+      <h3>Problem Solved</h3>
+      <p>Temperature-sensitive logistics requires immediate, compliant, and auditable decisions. Manual intervention is often slow and inconsistent for medium/high risk events.</p>
+      <h3>End-to-End System Scope</h3>
+      <ol>
+        <li>Telemetry ingestion from Supabase with resilience fallback.</li>
+        <li>Hybrid risk scoring (deterministic rules + XGBoost).</li>
+        <li>LangGraph orchestration for medium/high/critical events.</li>
+        <li>Tool execution: compliance, routing, scheduling, insurance, alerts, triage, approvals.</li>
+        <li>Operational dashboard + audit evidence through FastAPI services.</li>
+      </ol>
+      <h3>Architecture Diagram</h3>
+      <div class="links">
+        <a href="artitecture_diagram/aicargo_sa.pdf" target="_blank" rel="noopener">assets/artitecture_diagram/aicargo_sa.pdf</a>
+        <a href="artitecture_diagram/aicargo_df.pdf" target="_blank" rel="noopener">assets/artitecture_diagram/aicargo_df.pdf</a>
+      </div>
+      <details class="diagram-group">
+        <summary>Preview Architecture and Data Flow</summary>
+        <div class="diagram-grid">
+          <div class="diagram-card">
+            <h4>System Architecture</h4>
+            <object data="artitecture_diagram/aicargo_sa.pdf#toolbar=0&navpanes=0" type="application/pdf"></object>
+          </div>
+          <div class="diagram-card">
+            <h4>Data Flow</h4>
+            <object data="artitecture_diagram/aicargo_df.pdf#toolbar=0&navpanes=0" type="application/pdf"></object>
+          </div>
+        </div>
+      </details>
+      <h3>Demo</h3>
+      <div class="links">
+        <a href="https://ai-cargo-monitor-prod.vercel.app/" target="_blank" rel="noopener">https://ai-cargo-monitor-prod.vercel.app/</a>
+      </div>
+      <h3>GitHub</h3>
+      <div class="links">
+        <a href="https://github.com/rahul370139/SmithAgenticAIChallenge" target="_blank" rel="noopener">https://github.com/rahul370139/SmithAgenticAIChallenge</a>
+      </div>
+      <h3>Tech Stack</h3>
+      <p>Python, FastAPI, LangGraph, XGBoost, SHAP, Optuna, Supabase, React, Tailwind.</p>
+      <div class="impact"><strong>Business Impact Narrative:</strong> Improves intervention speed for high-risk cold-chain incidents, adds compliance transparency through RAG-backed validation and logging, and demonstrates governed agentic orchestration.</div>
+    </section>
+
+    <section class="section">
+      <h2>Project 03 - Doc2Data</h2>
+      <div class="pill-row">
+        <span class="pill">Multimodal AI</span>
+        <span class="pill">Document Intelligence</span>
+        <span class="pill">Healthcare Automation</span>
+      </div>
+      <h3>Overview</h3>
+      <p>Doc2Data is a healthcare document-to-JSON extraction platform that processes CMS-1500 and UB-04 forms using lane-based extraction, alignment, OCR, validation, and targeted rescue logic.</p>
+      <h3>Problem Solved</h3>
+      <p>Healthcare form extraction is noisy and expensive when every document is forced through the same OCR pipeline. Doc2Data adapts extraction strategy per document type and quality signal.</p>
+      <h3>End-to-End System Scope</h3>
+      <ol>
+        <li>Web upload entrypoint and extraction orchestration.</li>
+        <li>Form identification and lane selection (widgets/digital/scan/generic).</li>
+        <li>Alignment-aware OCR and typed validation checks.</li>
+        <li>Targeted VLM rescue for low-confidence fields.</li>
+        <li>Structured outputs with confidence, bboxes, QA notes, and debug traces.</li>
+      </ol>
+      <h3>Architecture Diagram</h3>
+      <div class="links">
+        <a href="artitecture_diagram/doc2data_sa.pdf" target="_blank" rel="noopener">assets/artitecture_diagram/doc2data_sa.pdf</a>
+      </div>
+      <details class="diagram-group">
+        <summary>Preview Architecture Diagram</summary>
+        <div class="diagram-grid">
+          <div class="diagram-card">
+            <h4>System Architecture</h4>
+            <object data="artitecture_diagram/doc2data_sa.pdf#toolbar=0&navpanes=0" type="application/pdf"></object>
+          </div>
+        </div>
+      </details>
+      <h3>Demo</h3>
+      <div class="links">
+        <a href="https://thinkray.space" target="_blank" rel="noopener">https://thinkray.space</a>
+      </div>
+      <h3>GitHub</h3>
+      <div class="links">
+        <a href="https://github.com/rahul370139/doc2data" target="_blank" rel="noopener">https://github.com/rahul370139/doc2data</a>
+      </div>
+      <h3>Tech Stack</h3>
+      <p>FastAPI, Next.js, LangGraph, Florence-2 OCR, VLM rescue, Docker.</p>
+      <div class="impact"><strong>Business Impact Narrative:</strong> Reduces extraction time from multi-minute runs to production-viable latency, improves reliability with lane routing and validation, and delivers integration-ready JSON outputs.</div>
+    </section>
+
+    <section class="section">
+      <h2>Comparative Strength Across Work Samples</h2>
+      <ul>
+        <li><strong>SkillSpring:</strong> Product-oriented full-stack GenAI with learning + career intelligence.</li>
+        <li><strong>AI Cargo:</strong> Agentic operations and compliance under real-world risk constraints.</li>
+        <li><strong>Doc2Data:</strong> Multimodal document AI with robust extraction and quality controls.</li>
+      </ul>
+      <p>Together, these projects show system design depth across user-facing UX, AI orchestration, data pipelines, and production delivery.</p>
+    </section>
+
+    <section class="section">
+      <h2>Link Placeholders (To Be Finalized)</h2>
+      <ul>
+        <li>AI Cargo demo: <code>Added</code></li>
+        <li>Additional repository links (if needed): <code>[Add GitHub Link]</code></li>
+        <li>External architecture links (if moved): <code>[Add External URL]</code></li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Contact</h2>
+      <div class="links">
+        <a href="mailto:rahul11s@umd.edu">Email: rahul11s@umd.edu</a>
+        <a href="https://linkedin.com/in/rahul-sharma--" target="_blank" rel="noopener">LinkedIn: https://linkedin.com/in/rahul-sharma--</a>
+        <a href="https://github.com/rahul370139" target="_blank" rel="noopener">GitHub: https://github.com/rahul370139</a>
+        <a href="https://rahul370139.github.io/git_portfolio/" target="_blank" rel="noopener">Portfolio: https://rahul370139.github.io/git_portfolio/</a>
+      </div>
+    </section>
+
+    <div class="footer">
+      Generated for professional interview and portfolio review use.
+    </div>
+  </main>
+</body>
+</html>

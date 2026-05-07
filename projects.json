@@ -7,9 +7,10 @@
       "Agentic layer uses plan, execute, observe, reflect, revise, and human-review states so automated actions remain auditable.",
       "Compliance agent uses pgvector-backed RAG plus fallback regulations to produce traceable validation events."
     ],
-    "image": "assets/projects/aicargo.png",
+    "image": "assets/projects/AI_cargo.png",
     "date": "Spring 2026",
-    "link": "https://github.com/nsumesh/SmithAgenticAIChallenge",
+    "demo": "https://ai-cargo-monitor-prod.vercel.app/",
+    "link": "https://github.com/rahul370139/SmithAgenticAIChallenge",
     "type": "github",
     "context": "Agentic AI | Cold Chain | Compliance",
     "architecture": [
